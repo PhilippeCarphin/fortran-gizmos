@@ -37,8 +37,8 @@ f_tclsh : tclAppInit.c Fortran_to_c_main.F90
 	rm -f tclAppInit.o
 
 f_wish : tkAppInit.c Fortran_to_c_main.F90
-	$(CCOMP) -c -Dmain=MY_C_MAIN tkAppInit.c -I/usr/include/tcl8.5
-	$(FCOMP) -o f_wish Fortran_to_c_main.F90 tkAppInit.o -ltk8.5  -ltcl8.5
+	$(CCOMP) -c -Dmain=MY_C_MAIN tkAppInit.c -I/usr/include/tcl8.5 $(shell pkg-config --cflags x11)
+	$(FCOMP) -o f_wish Fortran_to_c_main.F90 tkAppInit.o -ltk8.5  -ltcl8.5 $(shell pkg-config --libs x11)
 	rm -f tkAppInit.o
 
 clean:	
