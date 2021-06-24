@@ -27,8 +27,8 @@ f_demo:	mydemo.c Fortran_to_c_main.F90
 	rm -f mydemo.o
 
 f_python : pythonAppInit.c Fortran_to_c_main.F90
-	$(CCOMP) -c -Dmain=MY_C_MAIN pythonAppInit.c
-	$(FCOMP) -o f_python Fortran_to_c_main.F90 pythonAppInit.o -lpython2.7
+	$(CCOMP) -c -Dmain=MY_C_MAIN pythonAppInit.c $(shell pkg-config --cflags python3-embed)
+	$(FCOMP) -o f_python Fortran_to_c_main.F90 pythonAppInit.o $(shell pkg-config --libs python3-embed)
 	rm -f pythonAppInit.o
 
 f_tclsh : tclAppInit.c Fortran_to_c_main.F90
