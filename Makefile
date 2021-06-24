@@ -17,8 +17,8 @@ all:	f_python f_tclsh f_wish f_demo libompstubs.a
 demo:	f_demo
 
 libompstubs.a: openmp_stubs_c.c openmp_stubs_f.F90
-	$(CCOMP) -c -fPIC openmp_stubs_c.c
-	$(FCOMP) -c -fPIC openmp_stubs_f.F90
+	$(CCOMP) -c -fPIC openmp_stubs_c.c -I /opt/homebrew/Cellar/libomp/12.0.0/include
+	$(FCOMP) -c -fPIC openmp_stubs_f.F90 -I /opt/homebrew/Cellar/libomp/12.0.0/include
 	ar rcv libompstubs.a openmp_stubs_c.o openmp_stubs_f.o
 
 f_demo:	mydemo.c Fortran_to_c_main.F90
