@@ -136,9 +136,9 @@ program fcmain
     function c_main(nargs,argv) result(status) BIND(C,name='MY_C_MAIN')
     import
     implicit none
-    integer, intent(IN), value :: nargs
+    integer(C_INT), intent(IN), value :: nargs
     type(C_PTR), intent(IN), value :: argv
-    integer :: status
+    integer(C_INT) :: status
     end function c_main
   end interface
 
